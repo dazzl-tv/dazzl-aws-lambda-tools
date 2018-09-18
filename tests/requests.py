@@ -15,7 +15,11 @@ def my_func():
         event = json.load(f)
 
     for record in event['Records']:
-        dazzl.Lambda(record)
+        path = '/cgu/5b96422ee76ed00001d0a9fa'
+        body = {}
+        dz = dazzl.Lambda(record)
+
+        dz.send_request('GET', path, body)
 
 if __name__ == '__main__':
     my_func()

@@ -1,3 +1,37 @@
 # LIB Dazzl Lambda
 
-Library python for simplify to create lambda function (AWS lambda).
+Library python for simplify to create lambda function (AWS lambda) and Dazzl API service.
+
+## How to use
+
+```python
+# Import
+import dazzl
+
+# Initialize
+dz = dazzl.Lambda('aws.s3.bucket.name')
+```
+
+## Variables environments
+
+| Name             | Value example    | Required                        |
+| --               | --               | --                              |
+| `LOG_LEVEL`      | info             | `false`                         |
+| `URL_API__<env>` | https://dazzl.tv | `true` if you want send request |
+| `USERNAME_<env>` | roger@dazzl.tv   | `true` if you want send request |
+| `PASSWORD_<env>` | hidden_password  | `true` if you want send request |
+
+`<env>` represente type environment :
+- development : `DEVE`
+- staging :  `STAG`
+- production : `PROD`
+
+## Convention bucket name
+
+The bucket name exist for three environment :
+
+| Environment | Example bucket name     |
+| --          | --                      |
+| development | suffix.name.development |
+| staging     | suffix.name.staging     |
+| production  | suffix.name             |

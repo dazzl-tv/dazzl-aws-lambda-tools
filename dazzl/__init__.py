@@ -1,19 +1,16 @@
 from .environment import Environment
 from .logger import Logger
 from .request import Request
+from .bucket import Bucket
 
 class Lambda:
-    env = ''
-    bucket = ''
-    logger = None
-
-
-    def __init__(self, bucket):
+    def __init__(self, bucket_record):
         '''
         Constructor for this class.
         Initialize environment and level log for lambda function.
         '''
-        self.env = Environment(bucket)
+        self.bucket = Bucket(bucket_record)
+        self.env = Environment(self.bucket.name())
         self.logger = Logger(self.env)
         self.logger.info_about_lambda(self.env)
 
@@ -33,7 +30,14 @@ class Lambda:
         '''
         Return name to bucket used by lambda function
         '''
-        return self.bucket
+        return self.bucket.name()
+
+
+    def bucket_key(self):
+        '''
+        Return key to event pushed by bucket action.
+        '''
+        return self.bucket.key()
 
 
     def send_request(self, verb, path, body):

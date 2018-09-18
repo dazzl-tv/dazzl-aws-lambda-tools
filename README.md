@@ -2,6 +2,8 @@
 
 Library python for simplify to create lambda function (AWS lambda) and Dazzl API service.
 
+The authentication is automatically executed and use a environment variable.
+
 ## How to use
 
 ```python
@@ -10,6 +12,11 @@ import dazzl
 
 # Initialize
 dz = dazzl.Lambda('aws.s3.bucket.name')
+
+# Send a request to backend
+path = '/super/path/with/id/and/another/data'
+body = { 'foo' 'bar' }
+dz.send('POST', path, body)
 ```
 
 ## Variables environments

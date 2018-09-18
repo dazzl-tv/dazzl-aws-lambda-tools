@@ -36,8 +36,8 @@ class Lambda:
         return self.bucket
 
 
-    def send_request(self, verb, path, headers):
+    def send_request(self, verb, path, body):
         '''
         Send request to API.
         '''
-        self.request.send(verb, path, headers)
+        self.request.send(verb, path, body)

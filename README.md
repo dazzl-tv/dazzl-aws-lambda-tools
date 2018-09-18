@@ -20,10 +20,10 @@ body = { 'foo' 'bar' }
 dz.send('POST', path, body)
 
 # Get name to bucket
-dz.bucket_name
+dz.bucket_name()
 
 # Get key to bucket
-dz.bucket_key
+dz.bucket_key()
 ```
 
 ## Variables environments

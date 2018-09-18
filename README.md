@@ -49,3 +49,9 @@ The bucket name exist for three environment :
 | development | suffix.name.development |
 | staging     | suffix.name.staging     |
 | production  | suffix.name             |
+
+## Script test
+
+```linux
+clear; python3 -m memory_profiler ./tests/requests.py ; python3 -m memory_profiler ./tests/simple.py
+```

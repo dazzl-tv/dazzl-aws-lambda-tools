@@ -11,12 +11,19 @@ The authentication is automatically executed and use a environment variable.
 import dazzl
 
 # Initialize
-dz = dazzl.Lambda('aws.s3.bucket.name')
+# It's a bucket event
+dz = dazzl.Lambda(record)
 
 # Send a request to backend
 path = '/super/path/with/id/and/another/data'
 body = { 'foo' 'bar' }
 dz.send('POST', path, body)
+
+# Get name to bucket
+dz.bucket_name
+
+# Get key to bucket
+dz.bucket_key
 ```
 
 ## Variables environments

@@ -2,9 +2,6 @@ import os
 
 
 class Environment:
-    environment = ''
-
-
     def __init__(self, bucket_name):
         '''
         Constructor for class Environment.

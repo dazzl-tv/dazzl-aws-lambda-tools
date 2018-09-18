@@ -2,10 +2,6 @@ import logging
 import os
 
 class Logger:
-    log = None
-    level = logging.WARNING
-
-
     def __init__(self, environment):
         '''
         Constructor for class Logger.

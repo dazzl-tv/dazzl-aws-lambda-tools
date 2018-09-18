@@ -6,10 +6,6 @@ from .parameters import Parameters
 from .headers import Headers
 
 class Request:
-    access_token = ''
-    refresh_token = ''
-    type_token = ''
-
     def __init__(self, env):
         '''
         Constructor for class Request.

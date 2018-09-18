@@ -27,7 +27,7 @@ class Request:
         self._oauth_revoke()
 
 
-    def send(self, verb, path, body={}, headers={}):
+    def send(self, verb, path, body={}):
         '''
         Build request and send.
         If you use environment development write request in logger.
@@ -50,6 +50,7 @@ class Request:
         except requests.exceptions.MissingSchema as e:
             logging.critical('URL to API is not correctly configured !')
             logging.critical('Request [{}] not sending !'.format(path))
+            logging.critical(e)
 
 
     def _path_oauth_token(self):
@@ -82,6 +83,7 @@ class Request:
         except requests.exceptions.MissingSchema as e:
             logging.critical('URL to API is not correctly configured !')
             logging.critical('Token creation failed !')
+            logging.critical(e)
 
 
     def _oauth_revoke(self):
@@ -96,3 +98,4 @@ class Request:
         except requests.exceptions.MissingSchema as e:
             logging.critical('URL to API is not correctly configured !')
             logging.critical('Token revokation failed !')
+            logging.critical(e)

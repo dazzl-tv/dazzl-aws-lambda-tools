@@ -16,6 +16,7 @@ setuptools.setup(
     install_requires=[
         'os',
         'logging',
+        'json',
         'requests'
     ],
     classifiers=[

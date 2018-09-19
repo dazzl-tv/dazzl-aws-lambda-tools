@@ -6,8 +6,8 @@ class Headers:
         '''
 
 
-    def oauth(token):
+    def oauth(self, token):
         return {
             'Content-Type': 'application/json',
-            'Authorizations': 'Bearer {}'.format(token)
+            'Authorizations': 'Bearer '+token
         }

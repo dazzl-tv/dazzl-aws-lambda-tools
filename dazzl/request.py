@@ -11,6 +11,7 @@ class Request:
         Constructor for class Request.
         Initialize requester used by Lambda script.
         '''
+        logging.debug('# Configure requester')
         self.environment = env
         self.parameters = Parameters(self.environment)
         self._oauth_token()
@@ -29,38 +30,27 @@ class Request:
         If you use environment development write request in logger.
         '''
         try:
-            header = Headers()
+            header = Headers().oauth(self.access_token)
+            url = '{}{}'.format(self.environment.get_api_endpoint(), path)
+            verb = verb.lower()
 
-            if verb.upper() == 'POST':
-                requests.post(path, json=body, verify=False,
-                            headers=header.oauth())
-            elif verb.upper() == 'GET':
-                requests.get(path, json=body, verify=False,
-                             headers=header.oauth())
-            elif verb.upper() == 'PUT' or verb.upper() == 'PATCH':
-                requests.put(path, json=body, verify=False,
-                             headers=header.oauth())
-            elif verb.upper() == 'DELETE':
-                requests.delete(path, json=body, verify=False,
-                                headers=header.oauth())
+            logging.debug('Send request : {} {}'.format(verb, url))
+            logging.debug('With header : {}'.format(header))
+            logging.debug('With body : {}'.format(body))
+
+            getattr(requests, verb)(url, json=body, headers=header, verify=False)
+
         except requests.exceptions.MissingSchema as e:
             logging.critical('URL to API is not correctly configured !')
             logging.critical('Request [{}] not sending !'.format(path))
             logging.critical(e)
 
 
-    def _path_oauth_token(self):
+    def _path_oauth(self, action):
         '''
-        Path for ask token to Dazzl service
+        Path for create or revoke token to Dazzl service.
         '''
-        return '{}/oauth/token'.format(self.environment.get_api_endpoint())
-
-
-    def _path_oauth_revoke(self):
-        '''
-        Path for revoke token to Dazzl service.
-        '''
-        return '{}/oauth/revoke'.format(self.environment.get_api_endpoint())
+        return '{}/oauth/{}'.format(self.environment.get_api_endpoint(), action)
 
 
     def _oauth_token(self):
@@ -68,10 +58,8 @@ class Request:
         Send request to backend for ask valid token.
         '''
         try:
-            response = requests.post(self._path_oauth_token(),
-                                     json=self.parameters.token(),
-                                     headers={},
-                                     verify=False)
+            logging.debug('Send request for create token')
+            response = self._post(self._path_oauth('token'), self.parameters.token())
             data = json.loads(response.text)
             self.access_token = data['access_token']
             self.refresh_token = data['refresh_token']
@@ -87,11 +75,17 @@ class Request:
         Send request to backend for ask to revoke token.
         '''
         try:
-            requests.post(self._path_oauth_revoke(),
-                          json=self.parameters.revoke(self.access_token),
-                          headers={},
-                          verify=False)
+            logging.debug('Send request for revoke token')
+            self._post(self._path_oauth('revoke'),
+                       self.parameters.revoke(self.access_token))
         except requests.exceptions.MissingSchema as e:
             logging.critical('URL to API is not correctly configured !')
             logging.critical('Token revokation failed !')
             logging.critical(e)
+
+
+    def _post(self, path, body):
+        '''
+        Send request post for token create/revoke
+        '''
+        return requests.post(path, json=body, headers={}, verify=False)

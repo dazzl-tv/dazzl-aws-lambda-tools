@@ -15,7 +15,7 @@ def my_func():
         event = json.load(f)
 
     for record in event['Records']:
-        path = '/cgu/5b96422ee76ed00001d0a9fa'
+        path = '/cgus/5b96422ee76ed00001d0a9fa'
         body = {}
         dz = dazzl.Lambda(record)
 

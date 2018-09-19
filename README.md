@@ -35,6 +35,8 @@ The logger has different level :
 
 __if you want customize log level use variable environment `LOG_LEVEL`__
 
+For more information see : [Logging Levels](https://docs.python.org/3/library/logging.html#logging-levels)
+
 ## Variables environments
 
 | Name             | Value example    | Required                        |

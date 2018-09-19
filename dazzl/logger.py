@@ -15,7 +15,7 @@ class Logger:
             elif environment.staging:
                 self.level = logging.INFO
             elif environment.production:
-                self.level = logging.WARNING
+                self.level = logging.ERROR
 
         self.log = logging.getLogger()
         self.log.setLevel(self.level)

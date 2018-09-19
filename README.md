@@ -26,6 +26,15 @@ dz.bucket_name()
 dz.bucket_key()
 ```
 
+## Logger and environments
+
+The logger has different level :
+-  development has level `DEBUG`,
+- staging has level `INFO`,
+- production has level `ERROR`
+
+__if you want customize log level use variable environment `LOG_LEVEL`__
+
 ## Variables environments
 
 | Name             | Value example    | Required                        |
@@ -35,7 +44,7 @@ dz.bucket_key()
 | `USERNAME_<env>` | roger@dazzl.tv   | `true` if you want send request |
 | `PASSWORD_<env>` | hidden_password  | `true` if you want send request |
 
-`<env>` represente type environment :
+`<env>` is a environment type :
 - development : `DEVE`
 - staging :  `STAG`
 - production : `PROD`

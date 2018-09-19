@@ -1,4 +1,4 @@
-# LIB Dazzl Lambda
+# LIB Dazzl Lambda Tools
 
 Library python for simplify to create lambda function (AWS lambda) and Dazzl API service.
 

@@ -1,4 +1,4 @@
-import dazzl
+import dazzl_aws_lambda_tools as aws_lambda
 import json
 import os
 
@@ -17,7 +17,7 @@ def my_func():
     for record in event['Records']:
         path = '/cgus/5b96422ee76ed00001d0a9fa'
         body = {}
-        dz = dazzl.Lambda(record)
+        dz = aws_lambda.Tools(record)
 
         dz.send_request('GET', path, body)
 

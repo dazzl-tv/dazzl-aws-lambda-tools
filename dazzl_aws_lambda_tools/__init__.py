@@ -3,7 +3,7 @@ from .logger import Logger
 from .request import Request
 from .bucket import Bucket
 
-class Lambda:
+class Tools:
     def __init__(self, bucket_record):
         '''
         Constructor for this class.

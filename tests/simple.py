@@ -1,4 +1,4 @@
-import dazzl
+import dazzl_aws_lambda_tools as aws_lambda
 import json
 import os
 
@@ -11,7 +11,7 @@ def my_func():
         event = json.load(f)
 
     for record in event['Records']:
-        dazzl.Lambda(record)
+        aws_lambda.Tools(record)
 
 if __name__ == '__main__':
     my_func()

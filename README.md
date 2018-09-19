@@ -8,11 +8,11 @@ The authentication is automatically executed and use a environment variable.
 
 ```python
 # Import
-import dazzl
+import dazzl_aws_lambda_tools as aws_lambda
 
 # Initialize
 # It's a bucket event
-dz = dazzl.Lambda(record)
+dz = aws_lambda.Tools(record)
 
 # Send a request to backend
 path = '/super/path/with/id/and/another/data'

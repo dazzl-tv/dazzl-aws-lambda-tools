@@ -1,0 +1,27 @@
+language: python
+
+python:
+  - "3.5"
+  - "3.6"
+  - "3.7-dev"
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - ./tests/doctest.sh
+
+deploy:
+  provider: pypi
+  user: dazzl
+  password:
+    secure: ausOqbVzyZmy8Nogb7oBbiMudISJ0++0aaom+y59G4JT2XpMZ5BDoNv1YiKO1QOsoQOGfDDlITol6G1OmofAbRG6sURHmi155wzGMYGVsh2vPHMZPcTgNegJCrCnxE4A9OMgGQViSpyg7GSeOsEiH6dE8oiUbc4t9gZIHSwO82I7lfLDg6eqPH9lMqp6qYSE8kldK4dEiOtppvbn4fdON/wlXrpiK4EEmmNOld8SIhRFOcq8lDVue4RLjR8s1lvr6R8n6+tay8ex4pEcINixE7xhEP7fKJ7Kal3exDJQW+C7MzaE4bxvOVo3XRRXRsa/e450tSYpTcEqwFeQyb1hWssoTDzuEYloSi828fpbD+GYd/JhYd5uzfGvJ/RaQP/PZ7ltCcG7nXTdSEe6TS58x9nNA3S8ujI8U/5GKo0hvqeTFeYPp96Uct2DCpEDwc5IgbUiHVeKHVoWYzH6ZjAN7PAe+26d8gG86kHo8okwpGH8a3+MBV1JJdOumKzcFcF3kWENfyRL069dqDdUsGqYVdkg2fBf6ahQfw/QfakMj7StEwgk26aa/ClB61CsAaKa16zMxxDHNgMNG003mYWHtP07Em8pkMUuc5Rqw6vqe/Nw7u4QbLC8SByMlyra1w7lec8oZbl3/pzsON35ajm5RFKZw96BwodeD+HhKk+bq/w=
+  on:
+    branch: master
+
+notifications:
+  email: false
+  slack:
+    on_success: always
+    rooms:
+      secure: wq9V5QaS9tQPr0gaHtRCuLPbMei+gO6tHNwkDFbNUo9SFb1W/0zdxapnxQhxIcyqYfLanvnjprQHme3OXJnVP59jbG4CIfe0NMcOO4s+DYBJvEBEj2+li263A96mJCdXxVojDEZ83E/0+PppfNut+CBtvWikAkMyvvbPNyd0XkQ7dYK6iWEdLBRjDmC8HYRPZgLAcHADB85F60/BuUwsWkZhCyymAXU1McPVFu8OMBpb7LJhLy9MqB5W6VpOlmUYDeTasl5h+tV7ci2cr8Mcu6EAuSUWMG/bBm57z65cEG7kz750gw1Vt8h+mUgcmWfsXBbsJZrh7xpHOulynMcf0rwVcqanvfb9suHYHf0HXon9+ljlwbP2J91wrQqezmvZqhpekPYXD3Qz8qCtdSzhSOdVzE6LaAtDKrj6p9CJ1hwhp5tWUA1roz8pNdKCOHNkmcrWCOggnhDlxrBkwwVoDvVfIl9yL1kezL87mD8vRrSJWRzKjoE85fjFJM9JR6Ie/Bcf4FjWeWRNwAv4LrLOUBDI8Bs0KNdsw+pK/69EEG5N5gnqGmqs6KOY7Ucs75Hq3ZWop85GFocQnw0k4U6YarDvzrTKz/hcrSTCwnNG8jkpKRQ6x+76rlLPcXwaGkL34AmVJ7SFu8a5u8UJUYigPej6c58rBg5wwcvw++izUKg=

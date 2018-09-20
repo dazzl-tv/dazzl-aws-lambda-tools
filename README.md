@@ -1,4 +1,4 @@
-# LIB Dazzl Lambda Tools
+# LIB Dazzl Lambda Tools | [![Build Status](https://travis-ci.org/dazzl-tv/dazzl-aws-lambda-tools.svg?branch=master)](https://travis-ci.org/dazzl-tv/dazzl-aws-lambda-tools)
 
 Library python for simplify to create lambda function (AWS lambda) and Dazzl API service.
 

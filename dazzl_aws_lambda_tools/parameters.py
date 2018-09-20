@@ -11,13 +11,18 @@ class Parameters:
         '''
         Prepare body for request create token.
 
+        # Used in this way, but not tested because __dict__ are unpredictable on the order
+        >>> Parameters(env).token() # doctest: +SKIP
+        {'username': 'roger@dazzl.local', 'password': 'yopyopy', 'grant_type': 'password'}
+
         >>> import os
         >>> from environment import Environment
         >>> os.environ['USERNAME_DEVE'] = 'roger@dazzl.local'
         >>> os.environ['PASSWORD_DEVE'] = 'yopyopy'
         >>> env = Environment('my.bucket.name.development')
-        >>> Parameters(env).token()
-        {'username': 'roger@dazzl.local', 'password': 'yopyopy', 'grant_type': 'password'}
+        >>> sorted(Parameters(env).token().items())
+        [('grant_type', 'password'), ('password', 'yopyopy'), ('username', 'roger@dazzl.local')]
+
         '''
         return {
             'username': self.environment.get_username(),
@@ -30,13 +35,17 @@ class Parameters:
         '''
         Prepare body for request revoke token.
 
+        # Used in this way, but not tested because __dict__ are unpredictable on the order
+        >>> Parameters(env).revoke('SuperToken') # doctest: +SKIP
+        {'username': 'roger@dazzl.local', 'password': 'yopyop', 'token': 'SuperToken'}
+
         >>> import os
         >>> from environment import Environment
         >>> env = Environment('my.bucket.name')
         >>> os.environ['USERNAME_PROD'] = 'roger@dazzl.local'
         >>> os.environ['PASSWORD_PROD'] = 'yopyop'
-        >>> Parameters(env).revoke('SuperToken')
-        {'username': 'roger@dazzl.local', 'password': 'yopyop', 'token': 'SuperToken'}
+        >>> sorted(Parameters(env).revoke('SuperToken').items())
+        [('password', 'yopyop'), ('token', 'SuperToken'), ('username', 'roger@dazzl.local')]
         '''
         return {
             'username': self.environment.get_username(),
@@ -47,4 +56,4 @@ class Parameters:
 
 if __name__ == "__main__":
     import doctest
-    doctest.testmod()
+    doctest.testmod(report=False, raise_on_error=True)

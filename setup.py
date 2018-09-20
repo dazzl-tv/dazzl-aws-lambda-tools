@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='dazzl_aws_lambda_tools',
-    version='0.1',
+    version='0.2',
     author='VAILLANT Jeremy',
     author_email='jeremy@dazzl.tv',
     description='Library python for simplify to create lambda function (AWS lambda) and Dazzl API service.',

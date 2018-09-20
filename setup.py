@@ -14,9 +14,6 @@ setuptools.setup(
     url='http://github.com/dazzl-tv/dazzl-aws-lambda-tools.git',
     packages=setuptools.find_packages(),
     install_requires=[
-        'os',
-        'logging',
-        'json',
         'requests'
     ],
     classifiers=[

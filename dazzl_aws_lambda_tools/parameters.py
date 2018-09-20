@@ -45,7 +45,7 @@ class Parameters:
         >>> os.environ['USERNAME_PROD'] = 'roger@dazzl.local'
         >>> os.environ['PASSWORD_PROD'] = 'yopyop'
         >>> sorted(Parameters(env).revoke('SuperToken').items())
-        [('password', 'yopyop'), ('token', 'SuperToken'), ('username', 'roger@dazzl.local')]
+        [('assword', 'yopyop'), ('token', 'SuperToken'), ('username', 'roger@dazzl.local')]
         '''
         return {
             'username': self.environment.get_username(),
